@@ -28,7 +28,7 @@ public class BestiaryController : ControllerBase
         return beast;
     }
 
-    [HttpPost("{id:lenght(24)}")]
+    [HttpPost]
     public async Task<IActionResult> Post(Beast beastToCreate)
     {
         await _bestiaryServices.CreateAsync(beastToCreate);
