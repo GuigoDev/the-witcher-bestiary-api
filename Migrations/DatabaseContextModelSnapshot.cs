@@ -23,9 +23,11 @@ namespace BestiaryApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Immunity")
@@ -35,6 +37,7 @@ namespace BestiaryApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Occurrences")

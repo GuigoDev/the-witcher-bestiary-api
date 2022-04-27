@@ -4,7 +4,7 @@
 
 namespace BestiaryApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class ModelRevision : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,9 +14,9 @@ namespace BestiaryApi.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Category = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Category = table.Column<string>(type: "TEXT", nullable: false),
                     Variations = table.Column<string>(type: "TEXT", nullable: true),
                     Occurrences = table.Column<string>(type: "TEXT", nullable: true),
                     Vulnerable = table.Column<string>(type: "TEXT", nullable: true),

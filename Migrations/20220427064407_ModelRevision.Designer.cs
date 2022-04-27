@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BestiaryApi.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220427062233_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220427064407_ModelRevision")]
+    partial class ModelRevision
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,9 +25,11 @@ namespace BestiaryApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Immunity")
@@ -37,6 +39,7 @@ namespace BestiaryApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Occurrences")
