@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\guilh\\Documents\\github\\the-witcher-bestiary-api\\TheWitcherBestiary.csproj",
+  "FilePath": "c:\\Users\\guilh\\Documents\\github\\the-witcher-bestiary-api\\BestiaryApi.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16295,7 +16295,7 @@
     ],
     "CSharpLanguageVersion": 1000
   },
-  "RootNamespace": "TheWitcherBestiary",
+  "RootNamespace": "BestiaryApi",
   "Documents": [],
   "SerializationFormat": "0.2"
 }
