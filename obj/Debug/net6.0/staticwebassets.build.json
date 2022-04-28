@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "L+3UQ3QnaaUWdMlV6iZoLnvgZSr1tFYHPeKoF5QBRX4=",
-  "Source": "TheWitcherBestiary",
-  "BasePath": "_content/TheWitcherBestiary",
+  "Hash": "Y72gWQV+933vhDxctve2mlowZDriBqPzJKUO1nleOqQ=",
+  "Source": "BestiaryApi",
+  "BasePath": "_content/BestiaryApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

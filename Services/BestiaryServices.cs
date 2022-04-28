@@ -1,46 +1,55 @@
-using Bestiary.Models;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+using BestiaryApi.Models;
+using BestiaryApi.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace Bestiary.Services;
+namespace BestiaryApi.Services;
 
 public class BestiaryServices
 {
-    private readonly IMongoCollection<Beast> _beastCollection;
+    private readonly DatabaseContext _databaseContext;
 
-    public BestiaryServices(IOptions<BestiaryDatabaseSettings> bestiaryDatabaseSettings)
+    public BestiaryServices(DatabaseContext databaseContext)
     {
-        var mongoClient = new MongoClient(
-            bestiaryDatabaseSettings.Value.ConnectionString
-        );
-        
-        var mongoDatabase = mongoClient.GetDatabase(
-            bestiaryDatabaseSettings.Value.DatabaseName
-        );
-
-        _beastCollection = mongoDatabase.GetCollection<Beast>(
-            bestiaryDatabaseSettings.Value.BestiaryCollectionName
-            
-        );
+        _databaseContext = databaseContext;
     }
 
-    // Get all besats.
-    public async Task<List<Beast>> GetBeastsAsync() 
-        => await _beastCollection.Find(_ => true).ToListAsync();
-    
-    // Get only one beast by id.
-    public async Task<Beast?> GetBeastAsync(string id)
-        => await _beastCollection.Find(beast => beast.Id == id).FirstOrDefaultAsync();
+    public IEnumerable<Beast> GetAll()
+    {
+        return _databaseContext.Beasts
+            .AsNoTracking()
+            .ToList();
+    }
 
-    // Create a new beast on database.
-    public async Task CreateAsync(Beast beast)
-        => await _beastCollection.InsertOneAsync(beast);
+    public Beast? GetById(int id)
+    {
+        return _databaseContext.Beasts
+            .AsNoTracking()
+            .SingleOrDefault(beast => beast.Id == id);
+    }
 
-    // Update one beast by id.
-    public async Task UpdateAsync(string id, Beast updatedBeast)
-        => await _beastCollection.ReplaceOneAsync(beast => beast.Id == id, updatedBeast);
+    public Beast Create(Beast newBeast)
+    {
+        _databaseContext.Beasts.Add(newBeast);
+        _databaseContext.SaveChanges();
 
-    // Remove one beast by id.
-    public async Task RemoveAsync(string id)
-        => await _beastCollection.DeleteOneAsync(beast => beast.Id == id);
+        return newBeast;
+    }
+
+    public void Update(int id, Beast beast)
+    {
+        var beastToUpdate = _databaseContext.Beasts.Find(id);
+
+        if(beastToUpdate is null)
+            throw new NullReferenceException("Beast does not exists!");
+        
+        beastToUpdate.Name = beast.Name;
+        beastToUpdate.Description = beast.Description;
+        beastToUpdate.Variations = beast.Variations;
+        beastToUpdate.Occurrences = beast.Occurrences;
+        beastToUpdate.Vulnerable = beast.Vulnerable;
+        beastToUpdate.Immunity = beast.Immunity;
+        beastToUpdate.Loot = beast.Loot;
+
+        _databaseContext.SaveChanges();
+    }
 }

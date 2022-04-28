@@ -1,13 +1,13 @@
-using Bestiary.Models;
-using Bestiary.Services;
+using BestiaryApi.Services;
+using BestiaryApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<BestiaryDatabaseSettings>(
-    builder.Configuration.GetSection("TheWitcherBestiaryDatabase"));
+builder.Services.AddControllers();
 
-builder.Services.AddSingleton<BestiaryServices>();
+builder.Services.AddSqlite<DatabaseContext>("Data Source = BestiaryApi.db");
+builder.Services.AddScoped<BestiaryServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
