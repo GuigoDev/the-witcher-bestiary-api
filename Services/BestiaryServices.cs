@@ -27,7 +27,7 @@ public class BestiaryServices
             .SingleOrDefault(beast => beast.Id == id);
     }
 
-    public Beast Create(int id, Beast newBeast)
+    public Beast Create(Beast newBeast)
     {
         _databaseContext.Beasts.Add(newBeast);
         _databaseContext.SaveChanges();
@@ -42,7 +42,13 @@ public class BestiaryServices
         if(beastToUpdate is null)
             throw new NullReferenceException("Beast does not exists!");
         
-        beastToUpdate = beast;
+        beastToUpdate.Name = beast.Name;
+        beastToUpdate.Description = beast.Description;
+        beastToUpdate.Variations = beast.Variations;
+        beastToUpdate.Occurrences = beast.Occurrences;
+        beastToUpdate.Vulnerable = beast.Vulnerable;
+        beastToUpdate.Immunity = beast.Immunity;
+        beastToUpdate.Loot = beast.Loot;
 
         _databaseContext.SaveChanges();
     }
