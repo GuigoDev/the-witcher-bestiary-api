@@ -27,6 +27,13 @@ public class UserServices
             .SingleOrDefault(user => user.Id == id);
     }
 
+    public User? GetUser(string name, string password)
+    {
+        return _databaseContext.Users
+            .AsNoTracking()
+            .SingleOrDefault(user => user.Name == name && user.Password == password);
+    }
+
     public User Create(User newUser)
     {
         _databaseContext.Users.Add(newUser);
