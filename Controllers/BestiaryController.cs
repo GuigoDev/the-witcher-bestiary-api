@@ -1,6 +1,7 @@
 using BestiaryApi.Models;
 using BestiaryApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BestiaryApi.Controllers;
 
@@ -16,10 +17,12 @@ public class BestiaryController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IEnumerable<Beast> Get()
        => _bestiaryServices.GetAll();
     
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public ActionResult<Beast> GetById(int id)
     {
         var beast = _bestiaryServices.GetById(id);
@@ -31,6 +34,7 @@ public class BestiaryController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "root")]
     public IActionResult Create(Beast newBeast)
     {
         var beast = _bestiaryServices.Create(newBeast);
@@ -38,6 +42,7 @@ public class BestiaryController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "root")]
     public IActionResult Update(int id, Beast beast)
     {
         var beastToUpdate = _bestiaryServices.GetById(id);
@@ -52,6 +57,7 @@ public class BestiaryController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "root")]
     public IActionResult Delete(int id)
     {
         var beastToDelete = _bestiaryServices.GetById(id);

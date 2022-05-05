@@ -52,3 +52,11 @@ C:\Users\guilh\Documents\github\the-witcher-bestiary-api\obj\Debug\net6.0\refint
 C:\Users\guilh\Documents\github\the-witcher-bestiary-api\obj\Debug\net6.0\BestiaryApi.pdb
 C:\Users\guilh\Documents\github\the-witcher-bestiary-api\obj\Debug\net6.0\BestiaryApi.genruntimeconfig.cache
 C:\Users\guilh\Documents\github\the-witcher-bestiary-api\obj\Debug\net6.0\ref\BestiaryApi.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\guilh\Documents\github\the-witcher-bestiary-api\bin\Debug\net6.0\System.Security.Permissions.dll
