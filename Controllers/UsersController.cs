@@ -31,9 +31,32 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [Route("register")]
     public IActionResult Create(User newUser)
     {
         var user = _userServices.Create(newUser);
         return CreatedAtAction(nameof(GetById), new { id = user!.Id }, user);
+    }
+
+    [HttpPost]
+    [Route("login")]
+    public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] User user)
+    {
+        var usertToAuth = _userServices.GetUser(user.Name, user.Password);
+
+        if(usertToAuth is null)
+            return NotFound(new { message = "Usuário ou senha inválidos!" });
+        
+        // Generate token.
+        var token = TokenServices.GenerateToken(usertToAuth);
+
+        // Hide user password.
+        usertToAuth.Password = "";
+
+        return new 
+        {
+            user = usertToAuth,
+            token = token
+        };
     }
 }
