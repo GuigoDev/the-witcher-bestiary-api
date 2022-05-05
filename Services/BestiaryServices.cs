@@ -52,4 +52,13 @@ public class BestiaryServices
 
         _databaseContext.SaveChanges();
     }
+
+    public void Delete(int id)
+    {
+        var beastToDelete = _databaseContext.Beasts.Find(id);
+
+        if(beastToDelete is not null)
+            _databaseContext.Beasts.Remove(beastToDelete);
+            _databaseContext.SaveChanges();
+    }
 }

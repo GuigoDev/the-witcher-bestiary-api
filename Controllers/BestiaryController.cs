@@ -50,4 +50,18 @@ public class BestiaryController : ControllerBase
         else
             return NotFound();
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var beastToDelete = _bestiaryServices.GetById(id);
+
+        if(beastToDelete is not null)
+        {
+            _bestiaryServices.Delete(id);
+            return NoContent();
+        }
+        else
+            return NotFound();
+    }
 }
