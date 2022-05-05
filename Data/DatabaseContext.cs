@@ -8,4 +8,6 @@ public class DatabaseContext : DbContext
     public DatabaseContext (DbContextOptions<DatabaseContext> options) : base(options) {}
 
     public DbSet<Beast> Beasts => Set<Beast>();
+
+    public DbSet<User> Users => Set<User>();
 }
