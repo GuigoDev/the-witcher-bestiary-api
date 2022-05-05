@@ -1,6 +1,7 @@
 using BestiaryApi.Models;
 using BestiaryApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BestiaryApi.Controllers;
 
@@ -16,10 +17,12 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize(Roles = "root")]
     public IEnumerable<User> Get()
         => _userServices.GetAll();
 
     [HttpGet("{id}")]
+    [Authorize(Roles = "root")]
     public ActionResult<User> GetById(int id)
     {
         var user = _userServices.GetById(id);
