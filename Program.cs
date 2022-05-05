@@ -8,6 +8,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddSqlite<DatabaseContext>("Data Source = BestiaryApi.db");
 builder.Services.AddScoped<BestiaryServices>();
+builder.Services.AddScoped<UserServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
