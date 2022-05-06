@@ -65,13 +65,13 @@ public class UsersController : ControllerBase
 
     [HttpPut("{id}")]
     [Authorize(Roles = "root")]
-    public IActionResult UpdateUserName(int id, User user)
+    public IActionResult UpdateUser(int id, User user)
     {
         var userToUpdate = _userServices.GetById(id);
 
         if(userToUpdate is not null)
         {
-            _userServices.UpdateUserName(id, user);
+            _userServices.UpdateUser(id, user);
             return NoContent();
         }
         else
