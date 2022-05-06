@@ -41,4 +41,26 @@ public class UserServices
 
         return newUser;
     }
+
+    public void UpdateUserName(int id, User user)
+    {
+        var userToUpdate = _databaseContext.Users.Find(id);
+
+        if(userToUpdate is null)
+            throw new NullReferenceException("User does not exists!");
+        
+        userToUpdate.Name = user.Name;
+        _databaseContext.SaveChanges();
+    }
+
+    public void UpdatePassword(int id, User user)
+    {
+        var userToUpdate = _databaseContext.Users.Find(id);
+
+        if(userToUpdate is null)
+            throw new NullReferenceException("User does not exists!");
+        
+        userToUpdate.Password = user.Password;
+        _databaseContext.SaveChanges();
+    }
 }
