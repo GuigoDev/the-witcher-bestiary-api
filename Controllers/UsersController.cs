@@ -77,4 +77,19 @@ public class UsersController : ControllerBase
         else
             return NotFound();
     }
+
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "root")]
+    public IActionResult DeleteUser(int id)
+    {
+        var userToDelete = _userServices.GetById(id);
+
+        if(userToDelete is not null)
+        {
+            _userServices.DeleteUser(id);
+            return NoContent();
+        }
+
+        return NotFound();
+    }
 }

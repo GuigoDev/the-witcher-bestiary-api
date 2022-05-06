@@ -65,4 +65,13 @@ public class UserServices
             _databaseContext.SaveChanges();
         }
     }
+
+    public void DeleteUser(int id)
+    {
+        var userToDelete = _databaseContext.Users.Find(id);
+
+        if(userToDelete is not null)
+            _databaseContext.Users.Remove(userToDelete);
+            _databaseContext.SaveChanges();
+    }
 }
