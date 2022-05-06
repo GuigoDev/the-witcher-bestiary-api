@@ -48,19 +48,21 @@ public class UserServices
 
         if(userToUpdate is null)
             throw new NullReferenceException("User does not exists!");
-        
-        userToUpdate.Name = user.Name;
-        _databaseContext.SaveChanges();
-    }
-
-    public void UpdatePassword(int id, User user)
-    {
-        var userToUpdate = _databaseContext.Users.Find(id);
-
-        if(userToUpdate is null)
-            throw new NullReferenceException("User does not exists!");
-        
-        userToUpdate.Password = user.Password;
-        _databaseContext.SaveChanges();
+        else if(user.Name is not null && user.Password is not null)
+        {
+            userToUpdate.Name = user.Name;
+            userToUpdate.Password = user.Password;
+            _databaseContext.SaveChanges();
+        }
+        else if(user.Name is not null)
+        {
+            userToUpdate.Name = user.Name;
+            _databaseContext.SaveChanges();
+        }
+        else if(user.Password is not null)
+        {
+            userToUpdate.Password = user.Password;
+            _databaseContext.SaveChanges();
+        }
     }
 }
