@@ -42,7 +42,7 @@ public class UserServices
         return newUser;
     }
 
-    public void UpdateUserName(int id, User user)
+    public void UpdateUser(int id, User user)
     {
         var userToUpdate = _databaseContext.Users.Find(id);
 
