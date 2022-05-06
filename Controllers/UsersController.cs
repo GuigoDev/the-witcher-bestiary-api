@@ -62,4 +62,19 @@ public class UsersController : ControllerBase
             token = token
         };
     }
+
+    [HttpPut("{id}")]
+    [Authorize(Roles = "root")]
+    public IActionResult UpdateUserName(int id, User user)
+    {
+        var userToUpdate = _userServices.GetById(id);
+
+        if(userToUpdate is not null)
+        {
+            _userServices.UpdateUserName(id, user);
+            return NoContent();
+        }
+        else
+            return NotFound();
+    }
 }
